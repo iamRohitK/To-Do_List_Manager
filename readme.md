@@ -1,6 +1,6 @@
 # To-Do List Manager
 
-![To-Do List Manager](link-to-your-app-screenshot.png)
+![To-Do List Manager](https://github.com/iamRohitK/To-Do_List_Manager/assets/103317021/2b77407c-19a0-47f0-98ae-9a4efd3fe1d4)
 
 ## Table of Contents
 
@@ -52,7 +52,7 @@ Before you can run the To-Do List Manager application, make sure you have the fo
     cd todo-list-manager
     ```
 
-### Usage
+## Usage
 
 #### Adding a Task
 
