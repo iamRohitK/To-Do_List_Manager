@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Manager</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+
+    <style>
+        /* Reset some default styles for consistency */
+        body, h1, h2, h3, h4, h5, h6, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Set a background color and font for the entire page */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        /* Style the header */
+        header {
+            background-color: #007acc;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Style the form */
+        form {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 500px;
+        }
+
+        /* Style form input fields */
+        .input-field {
+            margin-bottom: 20px;
+        }
+
+        /* Style buttons */
+        .btn {
+            background-color: #007acc;
+            color: #fff;
+        }
+        
+        .btn:hover {
+            background-color: #005ea2;
+            transform: scale(1.05);
+        }
+
+        /* Style the "View Tasks" link */
+        a {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            color: #007acc;
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>My To-Do List Manager</h1>
+    </header>
+    <form action="/add" method="post" class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" name="task" id="task" class="validate" required>
+                <label for="task">Task</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" name="description" id="description" class="validate">
+                <label for="description">Description</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="date" name="due_date" id="due_date" class="datepicker">
+                <label for="due_date">Due Date</label>
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit">Add Task</button>
+    </form>
+
+    <br>
+    <a href="/tasks">View Tasks</a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

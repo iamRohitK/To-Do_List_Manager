@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+ 
+    <style>
+        /* Reset some default styles for consistency */
+        body, h1, h2, h3, h4, h5, h6, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Set a background color and font for the entire page */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        /* Style the header */
+        header {
+            background-color: #007acc;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Style buttons */
+        .btn {
+            background-color: #007acc;
+            color: #fff;
+        }
+        
+        .btn:hover {
+            background-color: #005ea2;
+            transform: scale(1.05);
+        }
+
+        /* Style the "View Tasks" link */
+        a {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            color: #007acc;
+            text-decoration: none;
+        }
+
+        /* Style the tasks page */
+        .container {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        /* Style filter buttons */
+        .btn-small {
+            margin-right: 10px;
+        }
+
+        .btn-small:hover {
+            background: rgba(91, 91, 194, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Style task items */
+        .collection-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            background-color: #f5f5f5;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style undo and redo buttons */
+        .collection-item div {
+            display: flex;
+            gap: 10px;
+        }
+
+        .collection-item .waves-effect {
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .collection-item .waves-effect:hover {
+            background: rgba(91, 91, 194, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Style back to home button */
+        .btn-back {
+            display: block;
+            margin: 20px auto;
+            background-color: #007acc;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .btn-back:hover {
+            background-color: #005ea2;
+            transform: scale(1.05);
+        }
+
+    </style>
+    
+</head>
+<body class="container">
+    <header>
+        <h1 class="center-align">All Tasks</h1>
+    </header>
+    <div class="row">
+        <div class="col s12 m6">
+            <a class="waves-effect waves-light btn" href="/tasks?filter=completed">Completed Tasks</a>
+        </div>
+        <div class="col s12 m6">
+            <a class="waves-effect waves-light btn" href="/tasks?filter=not_completed">Not Completed Tasks</a>
+        </div>
+    </div>
+    <ul class="collection">
+        {% for task in tasks %}
+            <li class="collection-item">
+                {{ task.name }} - {{ task.description }} - Due: {{ task.due_date }}
+                {% if not task.completed %}
+                    <a href="/complete/{{ task.id }}" class="secondary-content waves-effect waves-light btn-small">Mark as Completed</a>
+                {% endif %}
+                <a href="/delete/{{ task.id }}" class="secondary-content waves-effect waves-light btn-small">Delete</a>
+                <div>
+                    <a href="/undo/{{ task.id }}" class="waves-effect waves-light btn-small">Undo</a>
+                    <a href="/redo/{{ task.id }}" class="waves-effect waves-light btn-small">Redo</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="row">
+        <div class="col s12">
+            <a href="/" class="waves-effect waves-light btn">Back to Home</a>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
